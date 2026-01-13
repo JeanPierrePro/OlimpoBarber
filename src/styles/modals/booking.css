@@ -86,7 +86,7 @@
     height: 6px;
     background-color: #e0e0e0;
     border-radius: 10px;
-    overflow: visible;
+    overflow: visible; /* IMPORTANTE: Para o fogo sair para fora */
     position: relative;
 }
 
@@ -102,8 +102,8 @@
 .progress-fill::after {
     content: '';
     position: absolute;
-    right: -10px;
-    top: -12px;
+    right: -10px; /* Ajuste horizontal */
+    top: -12px;   /* Ajuste vertical */
     width: 24px;
     height: 24px;
     background-image: url('/icons/cortes/fogo preto.png'); 
@@ -119,12 +119,12 @@
     color: #000;
 }
 
-/* --- GRELHA COM SCROLL E CENTRAGEM (ALTERADO AQUI) --- */
+/* --- GRELHA COM SCROLL E CENTRAGEM --- */
 .options-grid {
     display: flex;
     gap: 15px;
     
-    /* Scroll horizontal */
+    /* Permite scroll horizontal */
     overflow-x: auto;
     overflow-y: hidden;
     
@@ -134,13 +134,12 @@
     
     padding: 10px 5px 25px 5px;
     
-    /* --- CÓDIGO PARA CENTRALIZAR --- */
-    width: fit-content;  /* A caixa ajusta-se ao conteúdo */
-    max-width: 100%;     /* Mas não ultrapassa a largura da janela */
-    margin: 0 auto;      /* Centraliza a caixa no meio */
+    /* --- MÁGICA DA CENTRALIZAÇÃO --- */
+    width: fit-content;  /* Encolhe se tiver poucos itens */
+    max-width: 100%;     /* Permite scroll se tiver muitos */
+    margin: 0 auto;      /* Centraliza */
     /* ------------------------------ */
-
-    /* Scroll suave e visual */
+    
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch; 
     scrollbar-width: thin;
@@ -154,7 +153,7 @@
     border-radius: 10px;
 }
 
-/* --- CARTÃO --- */
+/* --- CARTÃO DE SELEÇÃO --- */
 .option-card {
     flex: 0 0 150px; /* Tamanho fixo */
     min-width: 150px;
@@ -179,7 +178,6 @@
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
-/* Estado Selecionado */
 .option-card.selected {
     border: 2px solid #000;
     background-color: #fff;
@@ -253,7 +251,7 @@
     opacity: 0.6;
 }
 
-/* --- DATA, HORA E FORMULÁRIO --- */
+/* --- CALENDÁRIO --- */
 .date-time-container {
     display: flex;
     gap: 20px;
@@ -305,9 +303,10 @@
     font-weight: bold;
 }
 
+/* --- CARTÃO DE RESUMO (FINAL) --- */
 .summary-card {
     background: #fff;
-    border: 2px solid #C5A059;
+    border: 2px solid #C5A059; /* Borda Dourada */
     border-radius: 15px;
     padding: 15px 25px;
     display: flex;
@@ -316,10 +315,20 @@
     max-width: 400px;
     margin: 0 auto 30px auto;
 }
+
 .summary-text h4 { margin: 0; font-size: 1rem; color: #000; }
 .summary-text p { margin: 5px 0 0 0; font-size: 0.8rem; color: #C5A059; font-weight: bold; text-transform: uppercase; }
-.summary-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: contain; }
 
+/* ÍCONE DA MOEDA NO RESUMO */
+.summary-coin-icon {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    /* Opção: border-radius: 50% se quiser garantir redonda */
+    border-radius: 50%;
+}
+
+/* --- FORMULÁRIO E RESTO --- */
 .form-group {
     max-width: 500px;
     margin: 0 auto 12px auto;

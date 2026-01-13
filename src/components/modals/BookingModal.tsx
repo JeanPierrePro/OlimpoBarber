@@ -9,13 +9,13 @@ interface BookingModalProps {
 const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
     const [step, setStep] = useState(1);
     
-    // Estados de seleção
+    // Estados
     const [selectedBarber, setSelectedBarber] = useState<any>(null);
     const [selectedService, setSelectedService] = useState<any>(null);
     const [selectedDate, setSelectedDate] = useState<string>("");
     const [selectedTime, setSelectedTime] = useState<string>("");
     
-    // Formulário
+    // Form
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -24,7 +24,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
 
     if (!isOpen) return null;
 
-    // --- DADOS DOS BARBEIROS (ATUALIZADOS) ---
+    // --- DADOS ---
     const barbers = [
         { id: 1, name: 'Robert Simon', role: 'Barbeiro', img: '/cabeleiros/Roberto.webp' },
         { id: 2, name: 'João Pereira', role: 'Barbeiro', img: '/cabeleiros/Joao.webp' },
@@ -33,7 +33,6 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
         { id: 5, name: 'Bernardo B.', role: 'Barbeiro', img: '/cabeleiros/Bernardo.webp' },
     ];
 
-    // --- DADOS DOS SERVIÇOS ---
     const services = [
         { id: 1, name: 'Corte simples', price: '15€', icon: '/icons/cortes/corte simples.png' },
         { id: 2, name: 'Corte e barba', price: '20€', icon: '/icons/cortes/corte e barba.png' },
@@ -43,7 +42,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
 
     const timeSlots = ["9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "12:30", "13:00"];
 
-    // --- LÓGICA DE NAVEGAÇÃO ---
+    // --- NAVEGAÇÃO ---
     const handleNext = () => {
         if (step === 1 && !selectedBarber) return alert("Selecione um barbeiro ou 'Sem preferência'");
         if (step === 2 && !selectedService) return alert("Selecione um serviço");
@@ -59,12 +58,10 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
         setStep(5);
     };
 
-    // --- PASSO 1: BARBEIROS ---
+    // --- PASSO 1 ---
     const renderStep1 = () => (
         <>
             <h3 className="step-title">Escolhe o teu barbeiro</h3>
-            
-            {/* Scroll Horizontal */}
             <div className="options-grid">
                 {barbers.map(barber => (
                     <div 
@@ -72,15 +69,12 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                         className={`option-card ${selectedBarber?.id === barber.id ? 'selected' : ''}`}
                         onClick={() => setSelectedBarber(barber)}
                     >
-                        {/* Imagem redonda do barbeiro */}
                         <img src={barber.img} alt={barber.name} className="option-img-circle" />
                         <span className="option-name">{barber.name}</span>
                         <span className="option-sub">{barber.role}</span>
                     </div>
                 ))}
             </div>
-            
-            {/* Botão Sem Preferência */}
             <div className="no-pref-container">
                 <button 
                     className="no-pref-btn" 
@@ -96,7 +90,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
         </>
     );
 
-    // --- PASSO 2: SERVIÇOS ---
+    // --- PASSO 2 ---
     const renderStep2 = () => (
         <>
             <h3 className="step-title">Escolhe o teu corte</h3>
@@ -116,7 +110,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
         </>
     );
 
-    // --- PASSO 3: CALENDÁRIO ---
+    // --- PASSO 3 ---
     const renderStep3 = () => (
         <>
             <h3 className="step-title">Agenda o teu corte</h3>
@@ -136,7 +130,6 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                         ))}
                     </div>
                 </div>
-
                 <div className="time-wrapper">
                     <div className="time-grid">
                         {timeSlots.map(time => (
@@ -154,7 +147,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
         </>
     );
 
-    // --- PASSO 4: FORMULÁRIO ---
+    // --- PASSO 4: CONFIRMAÇÃO (ALTERADO) ---
     const renderStep4 = () => (
         <>
             <h3 className="step-title">Confirma a a tua marcação</h3>
@@ -165,7 +158,13 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                     <p>{selectedBarber?.name}</p>
                     <small>{selectedDate} às {selectedTime}</small>
                 </div>
-                <img src={selectedService?.icon || selectedBarber?.img} alt="Resumo" className="summary-avatar" />
+                
+                {/* AQUI ESTÁ A ALTERAÇÃO: APENAS A MOEDA */}
+                <img 
+                    src="/icons/icone da moeda.png" 
+                    alt="Olimpo Coin" 
+                    className="summary-coin-icon" 
+                />
             </div>
 
             <div className="form-group">
@@ -201,7 +200,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
         </>
     );
 
-    // --- PASSO 5: SUCESSO ---
+    // --- PASSO 5: SUCESSO (ALTERADO) ---
     const renderSuccess = () => (
         <div className="success-content">
             <h3 className="step-title">MARCAÇÕES</h3>
@@ -216,7 +215,13 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                     <p>{selectedBarber?.name}</p>
                     <small>{selectedDate} às {selectedTime}</small>
                 </div>
-                <img src={selectedService?.icon} alt="Resumo" className="summary-avatar" />
+                
+                {/* AQUI ESTÁ A ALTERAÇÃO: APENAS A MOEDA */}
+                <img 
+                    src="/icons/icone da moeda.png" 
+                    alt="Olimpo Coin" 
+                    className="summary-coin-icon" 
+                />
             </div>
 
             <button className="btn-confirm" onClick={onClose} style={{marginTop:'30px'}}>
