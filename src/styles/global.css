@@ -1,0 +1,38 @@
+/* src/styles/global.css */
+:root {
+  /* Cores Principais */
+  --color-gold: #C5A059;       /* O tal amarelo queimado da moeda */
+  --color-gold-hover: #e0b96e; /* Um tom mais claro para quando passar o rato */
+  --color-black: #000000;      /* Fundo da Navbar */
+  --color-dark-grey: #121212;  /* Fundo para secções escuras mas não pretas */
+  --color-white: #ffffff;
+  --background-color: #f9f9f9; /* Fundo geral do site (off-white) */
+  
+  /* Fontes e Tamanhos */
+  --font-primary: 'Helvetica Neue', Arial, sans-serif; /* Podes mudar para uma fonte Serif se quiseres mais clássico */
+  --nav-height: 80px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: var(--font-primary);
+  color: var(--color-black);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Utilitário para container centralizado */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+a {
+  text-decoration: none;
+}

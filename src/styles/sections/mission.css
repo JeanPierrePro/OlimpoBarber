@@ -1,0 +1,147 @@
+/* src/styles/sections/mission.css */
+
+.mission-section {
+    padding: 100px 0;
+    background-color: #f9f9f9; /* Fundo Clean */
+    overflow: hidden;
+}
+
+.mission-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    
+    display: flex;
+    align-items: center; /* Alinha verticalmente */
+    justify-content: space-between;
+    gap: 60px;
+}
+
+/* --- LADO ESQUERDO (TEXTO) --- */
+.mission-text {
+    flex: 1;
+    max-width: 550px;
+}
+
+.mission-text h2 {
+    font-family: 'GodsOlimpo', serif;
+    font-size: 3.5rem;
+    line-height: 1.1;
+    color: #C5A059; /* Dourado */
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.mission-text h2 span {
+    display: block; 
+}
+
+.mission-text p {
+    font-family: sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #111;
+    font-weight: 500;
+    text-align: justify;
+}
+
+/* --- LADO DIREITO (VÍDEO) --- */
+.mission-video {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* Caixa do Vídeo com Recorte */
+.mission-media-wrapper {
+    width: 100%;
+    max-width: 400px;
+    
+    /* Formato mais curto (4:5) para cortar as pernas */
+    aspect-ratio: 4/5; 
+    
+    border-radius: 40px;
+    overflow: hidden;
+    position: relative; /* Necessário para o botão absoluto funcionar */
+    
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    background-color: #000;
+    cursor: pointer; /* Mãozinha para indicar que é clicável */
+}
+
+/* O Vídeo em si */
+.responsive-video {
+    width: 100%;
+    height: 100%;
+    
+    object-fit: cover; /* Preenche tudo */
+    
+    /* Alinhamento: Centro horizontal, e 25% do topo (não corta a cabeça) */
+    object-position: center 25%; 
+    
+    display: block;
+}
+
+/* --- BOTÃO DE PLAY DOURADO --- */
+.video-overlay-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza exato */
+    
+    width: 80px;
+    height: 80px;
+    
+    background-color: rgba(0, 0, 0, 0.3); /* Fundo escuro leve */
+    border: 2px solid #C5A059; /* Aro Dourado */
+    border-radius: 50%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    transition: all 0.3s ease;
+    z-index: 10;
+    pointer-events: none; /* Deixa o clique passar para o wrapper */
+}
+
+/* O Triângulo do Play */
+.video-overlay-btn::after {
+    content: '';
+    display: block;
+    width: 0; 
+    height: 0; 
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 20px solid #C5A059; /* Triângulo Dourado */
+    margin-left: 5px; /* Ajuste visual */
+}
+
+/* Efeito Hover no Wrapper afeta o botão */
+.mission-media-wrapper:hover .video-overlay-btn {
+    background-color: rgba(0, 0, 0, 0.6);
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 900px) {
+    .mission-container {
+        flex-direction: column;
+        gap: 50px;
+        text-align: center;
+    }
+
+    .mission-text p {
+        text-align: center;
+    }
+
+    .mission-media-wrapper {
+        max-width: 300px;
+        border-radius: 30px;
+    }
+    
+    .mission-text h2 {
+        font-size: 2.8rem;
+    }
+}

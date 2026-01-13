@@ -1,0 +1,141 @@
+/* src/styles/sections/barbers.css */
+
+.barbers-section {
+  padding: 80px 0;
+  background-color: #f9f9f9; /* Fundo Clean */
+  overflow: hidden;
+}
+
+.section-title {
+  text-align: center;
+  font-family: 'GodsOlimpo', serif;
+  font-size: 2.5rem;
+  color: #000;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* --- CONTAINER DO SCROLL --- */
+.barbers-list-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto; /* Permite scroll */
+  padding: 20px 5%; /* Espaço lateral */
+  padding-bottom: 30px; /* Espaço em baixo */
+  
+  /* --- A MAGIA DO DRAG --- */
+  cursor: grab; /* Mostra a mãozinha aberta */
+  user-select: none; /* Impede que o texto fique azul ao arrastar */
+  
+  /* Comportamento de Scroll */
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory; /* Faz travar nos cards */
+  
+  /* Esconder a barra de scroll feia do navegador */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE/Edge */
+}
+
+/* Esconder barra no Chrome/Safari */
+.barbers-list-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Quando estás a clicar e segurar (Grabbing) */
+.barbers-list-container:active {
+  cursor: grabbing; /* Mão fechada */
+  scroll-behavior: auto; /* Remove suavidade para o arrasto ser instantâneo */
+  scroll-snap-type: none; /* Remove o travamento enquanto arrastas */
+}
+
+/* --- CARD DO BARBEIRO --- */
+.barber-card-wrapper {
+  min-width: 300px; /* Largura fixa */
+  height: 480px;    /* Altura fixa */
+  flex-shrink: 0;   /* Garante que não encolhem */
+  
+  scroll-snap-align: center; /* Onde o card para */
+  
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #e0e0e0; /* Fundo cinza enquanto carrega */
+  
+  transition: transform 0.3s ease;
+}
+
+.barber-card-wrapper:hover {
+  transform: scale(1.02); /* Zoom suave ao passar o rato */
+}
+
+/* Imagem */
+.barber-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  
+  /* IMPORTANTE: Impede o navegador de tentar arrastar a imagem para o ambiente de trabalho */
+  pointer-events: none; 
+}
+
+/* --- OVERLAY E TEXTO --- */
+.barber-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+  pointer-events: none; /* O clique passa através do overlay */
+}
+
+.barber-info {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.barber-info h3 {
+  color: #fff;
+  font-family: 'GodsOlimpo', serif;
+  font-size: 1.8rem;
+  margin: 0 0 5px 0;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.barber-info p {
+  color: #C5A059; /* Dourado */
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+/* --- BARRA DE PROGRESSO PRETA --- */
+.progress-bar-container {
+  width: 80%;
+  max-width: 600px;
+  height: 3px;
+  background-color: #d1d1d1; /* Fundo cinza claro */
+  margin: 20px auto 0;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-thumb {
+  height: 100%;
+  background-color: #000; /* Barra preta que mexe */
+  border-radius: 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: left 0.1s linear; /* Movimento fluido */
+}

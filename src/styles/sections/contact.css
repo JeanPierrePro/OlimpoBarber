@@ -1,0 +1,125 @@
+/* src/styles/sections/contact.css */
+
+.contact-section {
+    padding: 100px 0;
+    background-color: #f9f9f9; /* Fundo Clean */
+    color: #000;
+}
+
+/* --- CABEÇALHO --- */
+.contact-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 0 20px;
+}
+
+.contact-title {
+    font-family: 'GodsOlimpo', serif;
+    font-size: 2.5rem;
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.contact-subtitle {
+    font-family: sans-serif;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* --- CONTENTOR FLEX (LADO A LADO) --- */
+.contact-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 30px;
+    
+    display: flex;
+    align-items: center; /* Alinha verticalmente ao centro */
+    justify-content: space-between;
+    gap: 60px; /* Espaço entre texto e mapa */
+}
+
+/* --- LADO ESQUERDO (INFORMAÇÕES) --- */
+.contact-info-list {
+    flex: 1; /* Ocupa espaço disponível */
+    display: flex;
+    flex-direction: column;
+    gap: 35px; /* Espaço entre cada item (Localização, Telefone...) */
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start; /* Alinha o ícone com o topo do texto */
+    gap: 20px;
+}
+
+.contact-icon {
+    width: 35px; /* Tamanho dos ícones */
+    height: auto;
+    object-fit: contain;
+    margin-top: 5px; /* Pequeno ajuste para alinhar com o título */
+}
+
+.contact-details h3 {
+    font-family: 'GodsOlimpo', serif;
+    font-size: 1.2rem;
+    color: #000;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+
+.contact-details p {
+    font-family: sans-serif;
+    font-size: 0.95rem;
+    color: #444;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Espaço extra entre linhas de detalhe */
+.contact-details p + p {
+    margin-top: 5px;
+}
+
+/* --- LADO DIREITO (MAPA) --- */
+.contact-map-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* Encosta à direita */
+}
+
+.contact-map-img {
+    width: 100%;
+    max-width: 500px; /* Tamanho máximo do mapa */
+    aspect-ratio: 1/1; /* Quadrado arredondado */
+    object-fit: cover;
+    
+    border-radius: 40px; /* Cantos bem arredondados como na referência */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    
+    transition: transform 0.3s ease;
+}
+
+.contact-map-img:hover {
+    transform: scale(1.02);
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 900px) {
+    .contact-container {
+        flex-direction: column; /* Um em cima do outro */
+        gap: 50px;
+    }
+
+    .contact-info-list {
+        width: 100%;
+        max-width: 500px;
+    }
+    
+    .contact-map-wrapper {
+        justify-content: center;
+        width: 100%;
+    }
+}

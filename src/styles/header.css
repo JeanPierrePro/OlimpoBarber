@@ -1,0 +1,94 @@
+/* src/styles/common/header.css */
+
+.site-header {
+    /* --- 1. FUNDO BRANCO --- */
+    background-color: #ffffff; 
+    
+    position: sticky; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+    padding: 15px 0;
+    z-index: 1000; 
+    
+    /* Sombra muito suave em baixo */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* --- LOGOTIPO --- */
+.header-logo {
+    font-family: 'GodsOlimpo', serif;
+    font-size: 2.2rem;
+    
+    /* --- 2. COR DOURADA --- */
+    /* Para ficar igual à imagem 'OLIMPO' que mandaste */
+    color: #C5A059; 
+    
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-weight: bold;
+    white-space: nowrap; 
+}
+
+/* --- ÁREA DOS ÍCONES --- */
+.header-icons-area {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.icon-link {
+    display: block;
+    line-height: 0;
+    transition: transform 0.2s ease, opacity 0.2s;
+    cursor: pointer;
+}
+
+.icon-link:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+/* --- TAMANHO DOS ÍCONES --- */
+.header-icon-img {
+    width: 45px; 
+    height: 45px;
+    object-fit: contain;
+    
+    /* Nota: Como o fundo é branco, garante que os teus ícones 
+       não são brancos também, senão desaparecem. 
+       Se precisares de escurecer algum ícone branco, usa o filtro abaixo: */
+    /* filter: brightness(0); -> Isto tornaria o ícone preto */
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0 20px;
+    }
+    
+    .header-logo {
+        font-size: 1.8rem;
+    }
+
+    .header-icon-img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .header-icons-area {
+        gap: 15px;
+    }
+}

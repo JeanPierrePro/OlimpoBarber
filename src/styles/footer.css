@@ -1,0 +1,119 @@
+/* src/styles/common/footer.css */
+
+.site-footer {
+    background-color: #000000; /* Fundo Preto Total */
+    color: #ffffff;
+    padding: 70px 0 50px 0;
+    font-family: sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    
+    display: flex;
+    justify-content: space-between; /* Espalha as colunas */
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+/* --- COLUNA 1: MARCA E PAGAMENTOS --- */
+.footer-brand-col {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-logo {
+    font-family: 'GodsOlimpo', serif;
+    font-size: 3rem; /* Tamanho grande "OLIMPO" */
+    margin: 0 0 25px 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff; /* Se for texto. Se for imagem, ajusta-se */
+}
+
+/* Ícones de Pagamento (Payshop, MB, MBWay) */
+.payment-icons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.pay-icon {
+    height: 30px; /* Altura fixa para ficarem alinhados */
+    width: auto;
+    object-fit: contain;
+    background-color: #fff; /* Fundo branco para os logos se verem bem */
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+/* Redes Sociais */
+.social-area p {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+.social-icon {
+    width: 25px;
+    height: 25px;
+    filter: invert(1); /* Torna o ícone branco se ele for preto originalmente */
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.social-icon:hover {
+    opacity: 1;
+}
+
+/* --- COLUNAS DE LINKS (LEGAIS E APOIO) --- */
+.footer-links-col {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-links-col h3 {
+    font-family: 'GodsOlimpo', serif; /* Título serifado como na imagem */
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.footer-links-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links-col li {
+    margin-bottom: 12px;
+}
+
+.footer-links-col a {
+    color: #ccc; /* Cinza claro */
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-links-col a:hover {
+    color: #C5A059; /* Dourado ao passar o rato */
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .footer-links-col {
+        width: 100%;
+    }
+}

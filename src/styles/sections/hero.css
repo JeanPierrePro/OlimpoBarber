@@ -1,0 +1,128 @@
+/* src/styles/sections/hero.css */
+
+/* --- 1. IMPORTAÇÃO DA FONTE MANUSCRITA --- */
+@font-face {
+    font-family: 'OlimpoScript'; 
+    /* Certifica-te que tens o ficheiro em public/fonts/BrittanySignature.ttf */
+    src: url('/fonts/BrittanySignature.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* --- 2. ESTRUTURA DA SECÇÃO (CAPA) --- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    
+    /* Altura equilibrada (nem muito grande, nem pequena) */
+    height: 70vh; 
+    min-height: 550px; 
+    
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: flex-start; /* Alinha à esquerda */
+    padding-left: 8%; /* Margem da esquerda */
+    overflow: hidden;
+    
+    /* Configuração Base do Fundo */
+    background-size: cover;
+    background-position: center;
+    background-color: #111; /* Cor de fundo enquanto carrega */
+    transition: background-image 1.5s ease-in-out; /* Transição suave entre fotos */
+}
+
+/* --- 3. IMAGENS DO CARROSSEL (FUNDO) --- */
+/* Estas classes mudam automaticamente pelo React */
+.bg-image-1 { background-image: url('/espaco/space1_optimized.webp'); }
+.bg-image-2 { background-image: url('/espaco/space2_optimized.webp'); }
+.bg-image-3 { background-image: url('/espaco/space3_optimized.webp'); }
+
+/* Overlay escuro subtil (25%) para o texto branco ler-se melhor */
+.dark-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    z-index: 1;
+}
+
+/* --- 4. CONTEÚDO (TÍTULO E BOTÃO) --- */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinha botão à esquerda do texto */
+    max-width: 700px;
+}
+
+/* Título "Where Gods are made" */
+.hero-title {
+    font-family: 'OlimpoScript', cursive;
+    font-size: 4rem; /* Tamanho grande mas elegante */
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6); /* Sombra para leitura */
+    margin: 0 0 30px 0; /* Espaço em baixo para o botão */
+    line-height: 1.1;
+    font-weight: 400;
+}
+
+/* --- 5. BOTÃO MARCAÇÕES (ESTILO MÁRMORE) --- */
+.hero-booking-button {
+    font-family: 'GodsOlimpo', serif; /* Fonte do projeto */
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #000000; /* Preto para contrastar com o mármore branco */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    /* Tamanho do botão */
+    padding: 14px 50px;
+    
+    /* Borda e Formato */
+    border: 1px solid #C5A059; /* Dourado */
+    border-radius: 8px;
+    
+    /* TEXTURA DE MÁRMORE */
+    background-color: #fff; /* Fallback branco */
+    background-image: url('/texture/whitemarble.jpg'); 
+    background-size: cover; /* Cobre o botão todo */
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Sombra de profundidade */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito ao passar o rato no botão */
+.hero-booking-button:hover {
+    transform: translateY(-3px); /* Levanta ligeiramente */
+    box-shadow: 0 10px 25px rgba(197, 160, 89, 0.4); /* Sombra dourada */
+    opacity: 0.95;
+}
+
+/* --- 6. RESPONSIVIDADE (TELEMÓVEL) --- */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 60vh; /* Mais pequeno no telemóvel */
+        min-height: 450px;
+        
+        justify-content: center; /* Centraliza tudo */
+        padding-left: 0;
+        text-align: center;
+    }
+    
+    .hero-content {
+        align-items: center; /* Centraliza botão e texto */
+        padding: 0 20px;
+    }
+
+    .hero-title {
+        font-size: 3rem; /* Fonte menor */
+    }
+    
+    .hero-booking-button {
+        padding: 12px 35px;
+        font-size: 1.1rem;
+    }
+}

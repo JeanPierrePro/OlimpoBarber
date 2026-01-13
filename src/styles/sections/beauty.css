@@ -1,0 +1,127 @@
+/* src/styles/sections/beauty.css */
+
+.beauty-section {
+    position: relative;
+    width: 100%;
+    background-color: #000; /* Fundo Preto */
+    padding: 100px 0;
+    overflow: hidden; /* Corta o que sair da tela */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- DECORAÇÃO DOS CANTOS (AGORA MUITO MAIORES) --- */
+.corner-deco {
+    position: absolute;
+    
+    /* AUMENTO DO TAMANHO AQUI */
+    width: 30vw;       /* Ocupa 30% da largura da tela */
+    max-width: 300px;  /* Pode crescer até 500px (antes era 200px) */
+    min-width: 200px;  /* Garante que nunca fica muito pequeno */
+    
+    z-index: 1; /* Fica atrás do texto e da imagem */
+    pointer-events: none; /* O clique passa através deles */
+}
+
+.corner-top-left {
+    top: 0;
+    left: 0;
+}
+
+.corner-bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+/* --- CONTENTOR PRINCIPAL --- */
+.beauty-container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    
+    position: relative;
+    z-index: 2; /* Importante: Fica POR CIMA dos cantos */
+}
+
+/* --- LADO ESQUERDO (TEXTO) --- */
+.beauty-text {
+    flex: 1;
+    color: #fff;
+    padding-left: 20px;
+}
+
+.beauty-title {
+    font-family: 'GodsOlimpo', serif;
+    font-size: 2.5rem; /* Aumentei um pouco o título */
+    color: #C5A059; /* Dourado */
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.beauty-text p {
+    font-family: 'Cinzel', serif; /* Ou a tua fonte padrão */
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #f0f0f0;
+    margin-bottom: 25px;
+    text-align: justify;
+}
+
+/* Destaque para a última frase */
+.beauty-highlight {
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.15rem;
+    margin-top: 10px;
+    display: block;
+}
+
+/* --- LADO DIREITO (IMAGEM) --- */
+.beauty-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.beauty-image {
+    width: 100%;
+    max-width: 480px; /* Imagem ligeiramente maior */
+    aspect-ratio: 1/1; /* Quadrada */
+    object-fit: cover;
+    border-radius: 30px; /* Cantos arredondados na foto */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6); /* Sombra forte para destacar do fundo preto */
+    position: relative;
+    z-index: 3;
+}
+
+/* --- RESPONSIVIDADE (TELEMÓVEL) --- */
+@media (max-width: 900px) {
+    .beauty-container {
+        flex-direction: column; /* Um em cima do outro */
+        text-align: left;
+        gap: 40px;
+    }
+
+    .beauty-text {
+        padding-left: 0;
+        padding: 0 10px;
+    }
+
+    .beauty-title {
+        font-size: 2rem;
+    }
+    
+    /* Ajuste dos cantos no telemóvel para não atrapalhar */
+    .corner-deco {
+        width: 40vw; /* Grande no telemóvel também */
+        max-width: 200px;
+        opacity: 0.4; /* Mais transparente para conseguir ler o texto por cima */
+    }
+}
