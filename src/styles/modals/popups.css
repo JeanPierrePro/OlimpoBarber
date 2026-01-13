@@ -1,0 +1,114 @@
+/* src/styles/modals/popups.css */
+
+/* Fundo escuro atrás do popup */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Sombra igual à imagem */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999 !important;
+    backdrop-filter: blur(2px); /* Ligeiro desfoque no fundo */
+}
+
+/* A caixa branca */
+.popup-content {
+    background-color: #fff;
+    width: 90%;
+    max-width: 600px; /* Largura para caber o texto bem */
+    padding: 40px 40px;
+    border-radius: 8px; /* Cantos arredondados como na imagem */
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Botão de Fechar (X) */
+.popup-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #000;
+    font-weight: bold;
+    line-height: 1;
+}
+
+/* Título (Serifado) */
+.popup-title {
+    font-family: 'GodsOlimpo', serif; /* A fonte do título */
+    font-size: 1.8rem;
+    color: #000;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+/* Texto do corpo */
+.popup-text {
+    font-family: sans-serif; /* Fonte simples para leitura */
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #000; /* Texto preto */
+    margin-bottom: 30px;
+    text-align: center; /* Texto centrado como na imagem */
+}
+
+/* Área dos Botões */
+.popup-actions {
+    display: flex;
+    gap: 20px; /* Espaço entre os dois botões */
+    width: 100%;
+    justify-content: center;
+}
+
+/* Botões Pretos */
+.popup-btn-black {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 15px 0;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    flex: 1; /* Faz os botões terem o mesmo tamanho */
+    transition: background-color 0.2s;
+    text-transform: none; /* Mantém maiúsculas/minúsculas normais */
+}
+
+.popup-btn-black:hover {
+    background-color: #333;
+}
+
+/* Link em baixo */
+.popup-link {
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: #000;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Ajustes para telemóvel */
+@media (max-width: 600px) {
+    .popup-content { padding: 30px 20px; }
+    .popup-actions { flex-direction: column; gap: 10px; }
+    .popup-title { font-size: 1.5rem; }
+}

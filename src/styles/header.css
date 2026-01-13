@@ -1,18 +1,13 @@
 /* src/styles/common/header.css */
 
 .site-header {
-    /* --- 1. FUNDO BRANCO --- */
-    background-color: #ffffff; 
-    
+    background-color: #ffffff;
     position: sticky; 
     top: 0;
     left: 0;
     width: 100%;
-    
     padding: 15px 0;
     z-index: 1000; 
-    
-    /* Sombra muito suave em baixo */
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
@@ -30,11 +25,7 @@
 .header-logo {
     font-family: 'GodsOlimpo', serif;
     font-size: 2.2rem;
-    
-    /* --- 2. COR DOURADA --- */
-    /* Para ficar igual à imagem 'OLIMPO' que mandaste */
-    color: #C5A059; 
-    
+    color: #C5A059; /* Dourado */
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 2px;
@@ -46,49 +37,56 @@
 .header-icons-area {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 25px; /* Espaço entre cada grupo (Icone+Texto) */
 }
 
+/* Link que agrupa Ícone + Texto */
 .icon-link {
-    display: block;
-    line-height: 0;
-    transition: transform 0.2s ease, opacity 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Distância entre a moeda e o texto */
+    text-decoration: none;
     cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s;
 }
 
 .icon-link:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     opacity: 0.8;
 }
 
-/* --- TAMANHO DOS ÍCONES --- */
+/* Texto ao lado do ícone (OLIMPO SKIN / WEAR) */
+.icon-text {
+    font-family: sans-serif; /* Ou 'GodsOlimpo' se preferires a fonte do logo */
+    font-weight: bold;
+    font-size: 0.85rem;
+    color: #000; /* Texto a preto */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Imagens dos Ícones */
 .header-icon-img {
-    width: 45px; 
-    height: 45px;
+    width: 40px; 
+    height: 40px;
     object-fit: contain;
-    
-    /* Nota: Como o fundo é branco, garante que os teus ícones 
-       não são brancos também, senão desaparecem. 
-       Se precisares de escurecer algum ícone branco, usa o filtro abaixo: */
-    /* filter: brightness(0); -> Isto tornaria o ícone preto */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+/* Ajuste específico para o Perfil (se necessário) */
+.profile-icon {
+    width: 35px; /* Perfil ligeiramente menor se for silhueta preta */
+    height: 35px;
 }
 
 /* RESPONSIVIDADE */
 @media (max-width: 768px) {
-    .header-container {
-        padding: 0 20px;
-    }
+    .header-container { padding: 0 20px; }
+    .header-logo { font-size: 1.8rem; }
     
-    .header-logo {
-        font-size: 1.8rem;
-    }
-
-    .header-icon-img {
-        width: 35px;
-        height: 35px;
-    }
+    /* No telemóvel, talvez queiras esconder o texto e deixar só os ícones */
+    .icon-text { display: none; }
     
-    .header-icons-area {
-        gap: 15px;
-    }
+    .header-icon-img { width: 35px; height: 35px; }
+    .header-icons-area { gap: 15px; }
 }

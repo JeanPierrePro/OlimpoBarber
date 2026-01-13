@@ -1,15 +1,16 @@
-import React, { useState, useEffect, type FC } from 'react';
+import { useState, useEffect, type FC } from 'react';
 import '../../styles/sections/hero.css';
 
-// 1. IMPORTANTE: Importar o Modal que criámos
-import BookingModal from '../modals/BookingModal';
+// 1. Definimos que o Hero aceita uma função chamada 'onBookingClick'
+interface HeroProps {
+    onBookingClick?: () => void;
+}
 
-const Hero: FC = () => {
-    // Estado para rodar as imagens de fundo
-    const [currentImage, setCurrentImage] = useState(1);
+// 2. Recebemos essa função (prop) aqui
+const Hero: FC<HeroProps> = ({ onBookingClick }) => {
     
-    // 2. IMPORTANTE: Estado para controlar se o Modal está aberto ou fechado
-    const [isBookingOpen, setIsBookingOpen] = useState(false);
+    // Estado APENAS para rodar as imagens de fundo
+    const [currentImage, setCurrentImage] = useState(1);
 
     // Roda as imagens de fundo a cada 5 segundos
     useEffect(() => {
@@ -27,25 +28,15 @@ const Hero: FC = () => {
             <div className="hero-content">
                 <h1 className="hero-title">Where Gods are made</h1>
                 
-                {/* 3. IMPORTANTE: O botão agora tem o onClick para abrir o modal */}
+                {/* 3. Quando clicas, executa a função que veio do Home.tsx */}
                 <button 
                     className="hero-booking-button" 
-                    onClick={() => {
-                        console.log("Botão clicado!"); // Para testar se aparece no console
-                        setIsBookingOpen(true);
-                    }}
+                    onClick={onBookingClick}
                 >
                     MARCAÇÕES
                 </button>
             </div>
-
-            {/* 4. IMPORTANTE: O Modal em si (invisível até clicares no botão) */}
-            {/* Certifica-te que o ficheiro BookingModal.tsx existe na pasta src/components/modals/ */}
-            <BookingModal 
-                isOpen={isBookingOpen} 
-                onClose={() => setIsBookingOpen(false)} 
-            />
-
+            
         </section>
     );
 };
